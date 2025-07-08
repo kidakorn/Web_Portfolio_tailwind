@@ -4,279 +4,723 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio - Kidakorn Intha</title>
+	<meta name="description" content="Kidakorn Intha - Front-end Developer Portfolio">
+	<title>Kidakorn Intha - Front-end Developer</title>
 	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Google Fonts -->
 	<link
-		href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@400;500;600&family=Satisfy&display=swap"
 		rel="stylesheet">
+	<!-- AOS CSS -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<!-- Custom CSS -->
 	<link rel="stylesheet" href="style.css">
-
+	<!-- GSAP -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+	<!-- Particles.js -->
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<!-- AOS JavaScript -->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
-<body class="bg-gradient-to-b from-gr from-10% via-bg via-30% to-gr to-90% text-wg">
-	<header class="sticky top-0 z-50">
-		<nav class="flex justify-center items-center h-14 bg-gradient-to-b from-rdt to-gr text-wg border-b-8 border-bg px-4 sm:px-6 lg:px-8">
-			<div class="mr-4 sm:mr-10 lg:mr-36">
-				<img class="w-8 h-8 sm:w-8 sm:h-8 lg:w-8 lg:h-8 cursor-pointer hover:scale-110 transform transition-transform ease-in-out duration-300" src="img/dev.png" alt="dev logo" onclick="window.location.href='#home'">
+<body class="bg-white text-dark">
+	<!-- Particles.js container -->
+	<div id="particles-js"></div>
+
+	<!-- Main content wrapper -->
+	<div class="content-wrapper">
+		<!-- Navbar -->
+		<header class="fixed w-full top-0 z-50">
+			<nav class="navbar backdrop-blur-md shadow-lg transition-all duration-300">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="flex justify-between items-center h-16">
+						<!-- Logo -->
+						<div class="flex items-center">
+							<div class="logo-container relative">
+								<div
+									class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300">
+								</div>
+								<img class="w-12 h-12 hover-lift relative rounded-full border-2 border-white/50 hover:border-blue-400 transition-all duration-300"
+									src="img/logo.jpg" alt="Kidakorn Intha" onclick="window.location.href='#home'">
+							</div>
+						</div>
+
+						<!-- Desktop Menu -->
+						<div class="hidden sm:flex space-x-6">
+							<a href="#home" class="nav-link group">
+								<span class="nav-text">Home</span>
+								<span class="nav-indicator"></span>
+							</a>
+							<a href="#skills" class="nav-link group">
+								<span class="nav-text">Skills</span>
+								<span class="nav-indicator"></span>
+							</a>
+							<a href="#tools" class="nav-link group">
+								<span class="nav-text">Tools</span>
+								<span class="nav-indicator"></span>
+							</a>
+							<a href="#experience" class="nav-link group">
+								<span class="nav-text">Experience</span>
+								<span class="nav-indicator"></span>
+							</a>
+							<a href="#footer" class="nav-link group">
+								<span class="nav-text">Contact</span>
+								<span class="nav-indicator"></span>
+							</a>
+							<a href="#resume"
+								class="nav-cta px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg hover:scale-105 transition-all duration-300">
+								Resume
+							</a>
+						</div>
+
+						<!-- Mobile Menu Button -->
+						<div class="sm:hidden">
+							<button id="menu-btn"
+								class="relative w-10 h-10 focus:outline-none bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300">
+								<div class="hamburger">
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mobile Menu -->
+				<div id="mobile-menu" class="sm:hidden hidden">
+					<div class="px-4 py-4 space-y-3 bg-white/80 backdrop-blur-lg border-t border-gray-200">
+						<a href="#home" class="mobile-nav-link">
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+								</path>
+							</svg>
+							<span>Home</span>
+						</a>
+						<a href="#skills" class="mobile-nav-link">
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+								</path>
+							</svg>
+							<span>Skills</span>
+						</a>
+						<a href="#tools" class="mobile-nav-link">
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+								</path>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+							</svg>
+							<span>Tools</span>
+						</a>
+						<a href="#experience" class="mobile-nav-link">
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+								</path>
+							</svg>
+							<span>Experience</span>
+						</a>
+						<a href="#footer" class="mobile-nav-link">
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+								</path>
+							</svg>
+							<span>Contact</span>
+						</a>
+						<a href="#resume" class="mobile-nav-cta">
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+								</path>
+							</svg>
+							<span>Resume</span>
+						</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<!-- Hero Section -->
+			<section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+				<div class="max-w-7xl mx-auto">
+					<div class="flex flex-col lg:flex-row items-center justify-between">
+						<!-- Text Content -->
+						<div class="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
+							<div class="space-y-4">
+								<h1 class="hero-title opacity-90">
+									<span class="text-4xl sm:text-5xl font-light block mb-2" data-aos="fade-up">Hello, I'm</span>
+									<span class="gradient-text-1 font-satisfy text-6xl sm:text-7xl lg:text-8xl block" data-aos="fade-up" data-aos-delay="100">Kidakorn Intha</span>
+								</h1>
+								<p class="text-xl sm:text-2xl text-gray-300/90 font-light tracking-wide" data-aos="fade-up" data-aos-delay="200">
+									Developer
+								</p>
+							</div>
+						</div>
+
+						<!-- Profile Image with Effects -->
+						<div class="lg:w-1/2 flex justify-center">
+							<div class="relative">
+								<!-- Animated background elements -->
+								<div
+									class="absolute -inset-4 bg-gradient-2 rounded-full blur-2xl opacity-30 animate-pulse">
+								</div>
+
+								<!-- Floating image container -->
+								<div class="relative rounded-full overflow-hidden glow floating" data-aos="zoom-in">
+									<img src="img/profile.jpg" alt="Kidakorn Intha"
+										class="w-64 h-64 sm:w-80 sm:h-80 rounded-full object-cover">
+								</div>
+
+								<!-- Floating skill badges -->
+								<div class="absolute top-0 -left-4 skill-badge p-2 bg-white rounded-lg shadow-lg"
+									data-aos="fade-right" data-aos-delay="300">
+									<img src="img/React-icon.png" alt="React" class="w-8 h-8">
+								</div>
+								<div class="absolute top-1/4 -right-4 skill-badge p-2 bg-white rounded-lg shadow-lg"
+									data-aos="fade-left" data-aos-delay="500">
+									<img src="img/Tailwind_CSS_Logo.png" alt="Tailwind" class="w-8 h-8">
+								</div>
+								<div class="absolute bottom-1/4 -left-4 skill-badge p-2 bg-white rounded-lg shadow-lg"
+									data-aos="fade-right" data-aos-delay="700">
+									<img src="img/javascript.webp" alt="JavaScript" class="w-8 h-8">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- About Section -->
+			<section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="section-title">
+						<span class="gradient-header">About Me</span>
+					</h2>
+
+					<div class="max-w-3xl mx-auto">
+						<div class="glass-card p-8 rounded-xl shadow-xl" data-aos="fade-up">
+							<p class="text-lg text-gray-300/90 leading-relaxed mb-8">
+								I am a passionate Frontend Developer with a strong enthusiasm for Full Stack development. I have hands-on experience in HTML, CSS, JavaScript, React.js, and Node.js, as well as a solid foundation in SQL and API integration. Additionally, I have a background in graphic design and video editing, and I’ve completed internships in telecommunications networking and the electronics industry.
+							</p>
+
+							<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+								<div class="focus-pill">
+									<span>Frontend</span>
+								</div>
+								<div class="focus-pill">
+									<span>Design</span>
+								</div>
+								<div class="focus-pill">
+									<span>Backend</span>
+								</div>
+								<div class="focus-pill">
+									<span>Full Stack</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Skills Section -->
+			<section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="section-title">
+						<span class="gradient-header">Skills & Framework</span>
+					</h2>	
+
+					<div class="grid-scroll-container">
+						<button class="scroll-button left" id="leftArrow">
+							<img class="w-6 h-6" src="img/left-arrow-w.png" alt="Previous">
+						</button>
+
+						<div class="grid-wrapper" id="cardContainer">
+							<div class="grid grid-flow-col gap-6 auto-cols-max">
+								<!-- HTML -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="100">
+									<img src="img/html-5.png" alt="HTML" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">HTML</h3>
+								</div>
+
+								<!-- CSS -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="200">
+									<img src="img/css-3.png" alt="CSS" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">CSS</h3>
+								</div>
+
+								<!-- JavaScript -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="300">
+									<img src="img/javascript.webp" alt="JavaScript" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">JavaScript</h3>
+								</div>
+
+								<!-- React -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="400">
+									<img src="img/React-icon.png" alt="React" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">React</h3>
+								</div>
+
+								<!-- PHP -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="500">
+									<img src="img/php.png" alt="PHP" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">PHP</h3>
+								</div>
+
+								<!-- NodeJS -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="600">
+									<img src="img/Node.js_logo.png" alt="NodeJS" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">NodeJS</h3>
+								</div>
+
+								<!-- Tailwind -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="700">
+									<img src="img/Tailwind_CSS_Logo.png" alt="Tailwind" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">Tailwind</h3>
+								</div>
+
+								<!-- Bootstrap -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="800">
+									<img src="img/Bootstrap_logo.png" alt="Bootstrap" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">Bootstrap</h3>
+								</div>
+							</div>
+						</div>
+
+						<button class="scroll-button right" id="rightArrow">
+							<img class="w-6 h-6" src="img/right-arrow-w.png" alt="Next">
+						</button>
+
+						<div class="scroll-progress"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Tools Section -->
+			<section id="tools" class="py-20 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="section-title">
+						<span class="gradient-header">Tools</span>
+					</h2>
+
+					<div class="grid-scroll-container">
+						<button class="scroll-button left" id="leftArrow-tools">
+							<img class="w-6 h-6" src="img/left-arrow-w.png" alt="Previous">
+						</button>
+
+						<div class="grid-wrapper" id="cardContainer-tools">
+							<div class="grid grid-flow-col gap-6 auto-cols-max">
+								<!-- Figma -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="100">
+									<img src="img/Figma-logo.png" alt="Figma" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">Figma</h3>
+								</div>
+
+								<!-- Github -->
+								<div class="grid-item" data-aos="fade-up" data-aos-delay="200">
+									<img src="img/github-logo.png" alt="Github" class="mx-auto w-16 h-16 mb-4">
+									<h3 class="text-lg font-semibold mb-2">GitHub</h3>
+								</div>
+
+								<!-- Postman -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="300">
+									<img src="img/postman.png" alt="Postman" class="mx-auto">
+									<h2>Postman</h2>
+								</div>
+
+								<!-- Canva -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="400">
+									<img src="img/Canva-logo.png" alt="Canva" class="mx-auto">
+									<h2>Canva</h2>
+								</div>
+
+								<!-- ChatGPT -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="500">
+									<img src="img/chatgpt.png" alt="ChatGPT" class="mx-auto">
+									<h2>ChatGPT</h2>
+								</div>
+
+								<!-- Photoshop -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="600">
+									<img src="img/Adobe_Photoshop_CC.png" alt="Photoshop" class="mx-auto">
+									<h2>Photoshop</h2>
+								</div>
+
+								<!-- Illustrator -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="700">
+									<img src="img/Adobe_Illustrator_CC_icon.png" alt="Illustrator" class="mx-auto">
+									<h2>Illustrator</h2>
+								</div>
+
+								<!-- Premiere Pro -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="800">
+									<img src="img/Adobe_Premiere_Pro_CC_icon.png" alt="Premiere Pro" class="mx-auto">
+									<h2>Premiere Pro</h2>
+								</div>
+
+								<!-- After Effects -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="900">
+									<img src="img/Adobe_After_Effects_CC_icon.png" alt="After Effects" class="mx-auto">
+									<h2>After Effects</h2>
+								</div>
+
+								<!-- Arduino IDE -->
+								<div class="tool-card" data-aos="fade-up" data-aos-delay="1000">
+									<img src="img/Arduino_Logo.png" alt="Arduino IDE" class="mx-auto">
+									<h2>Arduino IDE</h2>
+								</div>
+							</div>
+						</div>
+
+						<button class="scroll-button right" id="rightArrow-tools">
+							<img class="w-6 h-6" src="img/right-arrow-w.png" alt="Next">
+						</button>
+
+						<div class="scroll-progress"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Portfolio Section -->
+			<section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="section-title">
+						<span class="gradient-header">Portfolio</span>
+					</h2>
+
+					<div class="grid md:grid-cols-3 gap-8 mt-12">
+						<!-- Project 1 -->
+						<a href="https://anc.banthihospital.org/" target="_blank" class="group">
+							<div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+								<div class="relative overflow-hidden rounded-xl">
+									<img src="img/anc_risk.PNG" alt="KMITL Attendance" 
+										class="w-full aspect-[4/3] object-cover transform group-hover:scale-110 transition-all duration-500">
+									<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+										<div class="absolute bottom-4 left-4 right-4">
+											<h3 class="text-xl font-semibold text-white mb-2">ANC RISK</h3>
+											<p class="text-gray-200 text-sm">Website ANC todo risk - Banthihospital</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</a>
+
+						<!-- Project 2 -->
+						<a href="https://wellet-app.vercel.app/" target="_blank" class="group">
+							<div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+								<div class="relative overflow-hidden rounded-xl">
+									<img src="img/wellet.PNG" alt="Arduino Projects" 
+										class="w-full aspect-[4/3] object-cover transform group-hover:scale-110 transition-all duration-500">
+									<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+										<div class="absolute bottom-4 left-4 right-4">
+											<h3 class="text-xl font-semibold text-white mb-2">Wellet-Myapp</h3>
+											<p class="text-gray-200 text-sm">Personal project website for recording income and expenses</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</a>
+
+						<!-- Project 3 -->
+						<a href="https://www.facebook.com/coke.intha/videos/863466091029461" target="_blank" class="group">
+							<div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
+								<div class="relative overflow-hidden rounded-xl">
+									<img src="img/wordpress.PNG" alt="Video Production" 
+										class="w-full aspect-[4/3] object-cover transform group-hover:scale-110 transition-all duration-500">
+									<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+										<div class="absolute bottom-4 left-4 right-4">
+											<h3 class="text-xl font-semibold text-white mb-2">WordPress clinic</h3>
+											<p class="text-gray-200 text-sm">Website salepage for a clinic, created for a client using WordPress</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Experience Section -->
+			<section id="experience" class="py-20 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="section-title">
+						<span class="gradient-header">Experience</span>
+					</h2>
+
+					<div class="relative mt-12">
+						<!-- Timeline line -->
+						<div
+							class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-400 to-purple-500">
+						</div>
+
+						<!-- Timeline items -->
+						<div class="space-y-12">
+
+							<!-- Longurie Production  -->
+							<div class="relative" data-aos="fade-up">
+								<div class="timeline-card md:w-5/12 md:ml-auto md:mr-0 md:pl-8">
+									<div
+										class="absolute hidden md:block left-0 transform -translate-x-full -translate-y-1/4">
+										<div class="w-4 h-4 rounded-full bg-blue-400 border-4 border-white"></div>
+									</div>
+									<div
+										class="bg-white bg-opacity-5 backdrop-blur-lg rounded-xl p-6 shadow-xl hover:transform hover:scale-105 transition-all duration-300">
+										<div class="flex flex-col">
+											<span class="text-blue-400 font-semibold mb-2">Jan - Mar 2025</span>
+											<h3 class="text-xl font-bold mb-2">Longurie Partnership Limited</h3>
+											<p class="text-gray-400 italic mb-2">Lampang, Thailand</p>
+											<p class="font-medium text-blue-300 mb-3">Graphic Designer & Video Editor</p>
+											<ul class="text-gray-300 space-y-2">
+												<li class="flex items-start">
+													<svg class="w-5 h-5 text-blue-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+													</svg>
+													Created compelling brand identities and marketing materials
+												</li>
+												<li class="flex items-start">
+													<svg class="w-5 h-5 text-blue-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+													</svg>
+													Produced engaging video content for social media campaigns
+												</li>
+												<li class="flex items-start">
+													<svg class="w-5 h-5 text-blue-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+													</svg>
+													Collaborated with marketing team on visual strategy
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Sahah Electronics Lamphun -->
+							<div class="relative" data-aos="fade-up">
+								<div class="timeline-card md:w-5/12 md:mr-auto md:ml-0 md:pr-8">
+									<div
+										class="absolute hidden md:block right-0 transform translate-x-full -translate-y-1/4">
+										<div class="w-4 h-4 rounded-full bg-purple-400 border-4 border-white"></div>
+									</div>
+									<div
+										class="bg-white bg-opacity-5 backdrop-blur-lg rounded-xl p-6 shadow-xl hover:transform hover:scale-105 transition-all duration-300">
+										<div class="flex flex-col">
+											<span class="text-purple-400 font-semibold mb-2">May – Sep 2023</span>
+											<h3 class="text-xl font-bold mb-2">Sahah Electronics Lamphun Part., Ltd.</h3>
+											<p class="text-gray-400 italic mb-2">Lamphun, Thailand</p>
+											<p class="font-medium text-purple-300 mb-3">Technical Specialist</p>
+											<ul class="text-gray-300 space-y-2">
+												<li class="flex items-start">
+													<svg class="w-5 h-5 text-purple-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+													</svg>
+													Led installation and maintenance of security systems and CCTV networks
+												</li>
+												<li class="flex items-start">
+													<svg class="w-5 h-5 text-purple-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+													</svg>
+													Optimized performance of satellite communication systems
+												</li>
+												<li class="flex items-start">
+													<svg class="w-5 h-5 text-purple-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+													</svg>
+													Provided technical support and maintenance for climate control systems
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- National Telecommunications -->
+							<div class="relative" data-aos="fade-up">
+								<div class="timeline-card md:w-5/12 md:ml-auto md:mr-0 md:pl-8">
+									<div
+										class="absolute hidden md:block left-0 transform -translate-x-full -translate-y-1/4">
+										<div class="w-4 h-4 rounded-full bg-blue-400 border-4 border-white"></div>
+									</div>
+									<div
+										class="bg-white bg-opacity-5 backdrop-blur-lg rounded-xl p-6 shadow-xl hover:transform hover:scale-105 transition-all duration-300">
+										<div class="flex flex-col">
+											<span class="text-blue-400 font-semibold mb-2">Nov 2022 - Feb 2023</span>
+											<h3 class="text-xl font-bold mb-2">National Telecommunications Company
+												Limited</h3>
+											<p class="text-gray-400 italic mb-2">Lamphun, Thailand</p>
+											<p class="font-medium text-blue-300 mb-3">Position: Intern</p>
+											<p class="text-gray-300">Managed network and telephone exchange services in
+												the province.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Mitsubishi Electric -->
+							<div class="relative" data-aos="fade-up">
+								<div class="timeline-card md:w-5/12 md:mr-auto md:ml-0 md:pr-8">
+									<div
+										class="absolute hidden md:block right-0 transform translate-x-full -translate-y-1/4">
+										<div class="w-4 h-4 rounded-full bg-purple-400 border-4 border-white"></div>
+									</div>
+									<div
+										class="bg-white bg-opacity-5 backdrop-blur-lg rounded-xl p-6 shadow-xl hover:transform hover:scale-105 transition-all duration-300">
+										<div class="flex flex-col">
+											<span class="text-purple-400 font-semibold mb-2">Feb 2019 - Sep 2019</span>
+											<h3 class="text-xl font-bold mb-2">Mitsubishi Electric Consumer Products
+											</h3>
+											<p class="text-gray-400 italic mb-2">Cholburi, Thailand</p>
+											<p class="font-medium text-purple-300 mb-3">Position: Intern</p>
+											<p class="text-gray-300">Value Engineering and Testing of Air Conditioning
+												Systems</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Download Resume Section -->
+			<section id="resume" class="py-20 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="section-title">
+						<span class="gradient-header">Resume</span>
+					</h2>
+
+					<div class="max-w-4xl mx-auto mt-12">
+						<div class="glass-card p-8 sm:p-10 rounded-xl shadow-xl relative overflow-hidden group" data-aos="fade-up">
+							<!-- Animated background gradient -->
+							<div class="absolute -inset-2 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-xl opacity-30 group-hover:opacity-50 blur-3xl transition-all duration-500"></div>
+							
+							<!-- Content -->
+							<div class="relative z-10">
+								<div class="flex flex-col lg:flex-row items-stretch gap-8">
+									<!-- Left Column -->
+									<div class="lg:w-2/3">
+										<div class="mb-6">
+											<h3 class="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+												KIDAKORN INTHA
+											</h3>
+											<p class="text-lg text-gray-300/90 mb-1">Developer</p>
+											<p class="text-sm text-gray-400">Last updated: July 2025</p>
+										</div>
+
+										
+
+										<!-- Mini Skills Preview -->
+										<div class="flex flex-wrap gap-2 mb-6">
+											<span class="px-3 py-1 bg-white/5 rounded-full text-sm text-blue-300 border border-blue-500/20">Web Development</span>
+											<span class="px-3 py-1 bg-white/5 rounded-full text-sm text-purple-300 border border-purple-500/20">WordPress</span>
+										</div>
+									</div>
+
+									<!-- Right Column -->
+									<div class="lg:w-1/3 flex flex-col justify-center items-center lg:border-l lg:border-gray-700 lg:pl-8">
+										<div class="w-full flex flex-col items-center space-y-6">
+											<!-- Download Button -->
+											<a href="https://drive.google.com/file/d/1eAVsjPRGf5gz0yzFwHv0AKWC4X2OyL2A" target="_blank"
+												class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 group">
+												<span class="text-lg font-semibold">Download Resume</span>
+												<svg class="w-6 h-6 transform group-hover:translate-y-[-2px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+												</svg>
+											</a>
+
+											<!-- Preview Button -->
+											<a href="https://drive.google.com/file/d/1eAVsjPRGf5gz0yzFwHv0AKWC4X2OyL2A" target="_blank"
+												class="text-gray-300 flex items-center gap-2 hover:text-blue-400 transition-colors">
+												<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+												</svg>
+												<span>Preview Resume</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<footer class="mt-20 bg-gradient-to-b from-gray-900 to-black text-white">
+		<div class="container mx-auto px-4 py-12" id="footer">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<!-- About Column -->
+				<div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+					<h3 class="text-xl font-bold mb-4 gradient-text-1">About Me</h3>
+					<p class="text-gray-300 mb-4">Frontend Developer skilled in HTML, CSS, JavaScript, React.js, Node.js, and API integration. Experienced in graphic design, video editing, and internships in telecom and electronics.</p>
+				</div>
+
+				<!-- Contact Column -->
+				<div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+					<h3 class="text-xl font-bold mb-4 gradient-text-2">Contact Info</h3>
+					<div class="space-y-2">
+						<p class="text-gray-300 flex items-center">
+							<svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+								<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+								<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+							</svg>
+							kidakorn.1@gmail.com
+						</p>
+						<p class="text-gray-300 flex items-center">
+							<svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+								<path
+									d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
+								</path>
+							</svg>
+							+6609-759-6314
+						</p>
+					</div>
+				</div>
+
+				<!-- Social Links Column -->
+				<div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+					<h3 class="text-xl font-bold mb-4 gradient-text-1">Follow Me</h3>
+					<div class="grid grid-cols-5 gap-4">
+						<a href="https://www.facebook.com/coke.intha/" target="_blank" class="social-icon-link">
+							<img src="img/facebook.png" alt="Facebook"
+								class="w-8 h-8 transition-all hover:scale-110 hover:brightness-125">
+						</a>
+						<a href="https://www.instagram.com/c0ke_c0ke/" target="_blank" class="social-icon-link">
+							<img src="img/instagram.png" alt="Instagram"
+								class="w-8 h-8 transition-all hover:scale-110 hover:brightness-125">
+						</a>
+						<a href="https://line.me/ti/p/oIXCAkx4Xf" target="_blank" class="social-icon-link">
+							<img src="img/line.png" alt="Line"
+								class="w-8 h-8 transition-all hover:scale-110 hover:brightness-125">
+						</a>
+						<a href="https://www.linkedin.com/in/kidakorn-intha-a92782282/" target="_blank"
+							class="social-icon-link">
+							<img src="img/linkedin.png" alt="LinkedIn"
+								class="w-8 h-8 transition-all hover:scale-110 hover:brightness-125">
+						</a>
+						<a href="https://github.com/kidakorn" target="_blank" class="social-icon-link">
+							<img src="img/github-logo.png" alt="GitHub"
+								class="w-8 h-8 transition-all hover:scale-110 hover:brightness-125">
+						</a>
+					</div>
+				</div>
 			</div>
-			<div class="sm:hidden flex justify-end w-full">
-				<button id="menu-btn" class="text-wg focus:outline-none">
-					<img src="img/hamburger w.png" alt="hamburger menu" class="w-6 h-6">
-				</button>
-			</div>
-			<ul id="menu" class="hidden sm:flex space-x-2 sm:space-x-4 lg:space-x-10 2xl:space-x-36 text-wg font-bold text-shadow-custom">
-				<li><a href="#home" class="hover:text-gr duration-300">HOME</a></li>
-				<li><a href="#skills" class="hover:text-gr duration-300">SKILLS</a></li>
-				<li><a href="#tools" class="hover:text-gr duration-300">TOOLS</a></li>
-				<li><a href="#experience" class="hover:text-gr duration-300">EXPERIENCE</a></li>
-				<li><a href="#contact" class="hover:text-gr duration-300">CONTACT</a></li>
-				<li><a href="#resume" class="hover:text-gr duration-300">RESUME</a></li>
-			</ul>
-		</nav>
-		<div id="mobile-menu" class="sm:hidden hidden flex flex-col items-center bg-gradient-to-b from-rdt to-gr text-wg border-b-8 border-bg">
-			<a href="#home" class="py-2 hover:text-gr duration-300">HOME</a>
-			<a href="#skills" class="py-2 hover:text-gr duration-300">SKILLS</a>
-			<a href="#tools" class="py-2 hover:text-gr duration-300">TOOLS</a>
-			<a href="#experience" class="py-2 hover:text-gr duration-300">EXPERIENCE</a>
-			<a href="#contact" class="py-2 hover:text-gr duration-300">CONTACT</a>
-			<a href="#resume" class="py-2 hover:text-gr duration-300">RESUME</a>
 		</div>
-	</header>
 
-	<main>
-		<section id="home" class="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
-			<h1
-				class="text-4xl sm:text-5xl lg:text-6xl font-bold text-center font-satisfy text-rd text-shadow-custom mb-16 hover:scale-105 transform transition-transform duration-300 cursor-pointer">
-				Kidakorn Intha</h1>
-			<p class="text-center mt-4 text-base sm:text-lg lg:text-xl font-mitr text-wg hover:scale-105 transform transition-transform duration-300 cursor-pointer">Hi, I’m Kidakorn Intha, a
-				Frontend
-				Developer
-				enthusiast
-				with a deep passion for creating engaging and responsive websites.
-				I enjoy building web applications that work seamlessly across devices
-				using modern technologies such as HTML, CSS, JavaScript,
-				and popular frameworks like React.</p>
-			<div class="relative hover:scale-125 transform transition-transform duration-300 ease-in-out cursor-pointer">
-				<div class="absolute inset-0 flex justify-center items-center">
-					<svg class="w-60 h-60 bg-gradient-to-r from-rd rounded-full animate-spinSlower "></svg>
-				</div>
-				<img src="/img/profile.jpg" alt="profile picture" class="w-56 h-56 rounded-full object-cover mx-auto mt-32 relative ">
-			</div>
-		</section>
-
-		<section id="skills" class="w-full max-w-6xl px-4 relative mx-auto py-10 px-4 sm:px-6 lg:px-8">
-			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-rd text-shadow-custom hover:scale-105 transform transition-transform duration-300 cursor-pointer">SKILLS -
-				FRAMWORK</h2>
-
-			<div class="absolute inset-y-0 left-0 flex items-center mt-12">
-				<button class="bg-wg text-wg p-2 rounded-full hover:bg-gr" id="leftArrow">
-					<img class="w-6 h-6" src="img/left-arrow.png" alt="left">
-				</button>
-			</div>
-			<div class="absolute inset-y-0 right-0 flex items-center mt-12">
-				<button class="bg-wg text-wg p-2 rounded-full hover:bg-gr" id="rightArrow">
-					<img class="w-6 h-6" src="img/right-arrow.png" alt="right">
-				</button>
-			</div>
-			<div class="w-full max-w-6xl px-4 relative my-12 sm:my-20 lg:my-28 ">
-
-				<div class="flex space-x-4 overflow-x-hidden p-12" id="cardContainer">
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/html-5.png" alt="html" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">HTML</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/css-3.png" alt="css" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">CSS</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/javascript.webp" alt="javascript" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Javascript</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/React-icon.png" alt="react" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">React</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/php.png" alt="php" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">PHP</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/programing.png" alt="NodeJS" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">NodeJS</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Tailwind_CSS_Logo.png" alt="tailwind" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Tailwind</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px] shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Bootstrap_logo.png" alt="Bootstrap" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">bootstrap</h2>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="tools" class="w-full max-w-6xl px-4 relative mx-auto py-10 px-4 sm:px-6 lg:px-8">
-			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-rd text-shadow-custom hover:scale-105 transform transition-transform duration-300 cursor-pointer">TOOLS</h2>
-
-			<div class="absolute inset-y-0 left-0 flex items-center mt-12">
-				<button class="bg-bg text-wg p-2 rounded-full hover:bg-wg" id="leftArrow-tools">
-					<img class="w-6 h-6" src="img/left-arrow.png" alt="left">
-				</button>
-			</div>
-			<div class="absolute inset-y-0 right-0 flex items-center mt-12">
-				<button class="bg-bg text-wg p-2 rounded-full hover:bg-wg" id="rightArrow-tools">
-					<img class="w-6 h-6" src="img/right-arrow.png" alt="right">
-				</button>
-			</div>
-			<div class="w-full max-w-6xl px-4 relative my-12 sm:my-20 lg:my-28">
-
-				<div class="flex space-x-4 overflow-x-hidden p-12" id="cardContainer-tools">
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Figma-logo.png" alt="Figma" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Figma</h2>
-					</div>
-					<div						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/github-logo.png" alt="Github" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Github</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/postman.png" alt="postman" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Postman</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Canva-logo.png" alt="Canva" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Canva</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/chatgpt.png" alt="ChatGPT" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">ChatGPT</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Adobe_Photoshop_CC.png" alt="Photoshop" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Photoshop</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Adobe_Illustrator_CC_icon.png" alt="Illustrator"
-							class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Illustrator</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Adobe_Premiere_Pro_CC_icon.png" alt="Premiere Pro"
-							class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Premiere Pro</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Adobe_After_Effects_CC_icon.png" alt="After Effects"
-							class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">After Effects</h2>
-					</div>
-					<div
-						class="min-w-[180px] min-h-[190px]  shadow-custom rounded-3xl p-4 flex flex-col items-center cursor-pointer hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-wg group">
-						<img src="img/Arduino_Logo.png" alt="Arduino" class="w-24 h-24 mb-4 object-contain">
-						<h2 class="text-wg font-semibold group-hover:text-gr">Arduino IDE</h2>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="experience" class="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-rd text-shadow-custom hover:scale-105 transform transition-transform duration-300 cursor-pointer">EXPRERIENCE
-			</h2>
-
-			<div class="grid grid-rows-1  md:grid-rows-1 lg:grid-rows-1  gap-8 mt-12 max-w-5xl mx-auto">
-				<div class="bg-wg shadow-custom rounded-3xl p-6 hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-bg group">
-					<p class="text-gr font-bold">Nov 2022 - Feb 2023</p>
-					<h3 class="text-xl font-semibold mb-2 text-rd group-hover:text-wg">National Telecommunications Company Limited (Lamphun)
-					</h3>
-					<p class="text-bg text-sm font-bold group-hover:text-gr">Position: Intern</p>
-					<p class="mt-4 text-bg font-bold group-hover:text-gr">Responsibilities: Managed network and telephone exchange services
-						in the province.</p>
-				</div>
-				<div class="bg-wg shadow-custom rounded-3xl p-6 hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-bg group">
-					<p class="text-gr font-bold">Feb 2019 - Sep 2019</p>
-					<h3 class="text-xl font-semibold mb-2 text-rd group-hover:text-wg">Mitsubishi Electric Consumer Products (Thailand) Co.,
-						Ltd.</h3>
-					<p class="text-bg text-sm font-bold group-hover:text-gr">Position: Intern</p>
-					<p class="mt-4 text-bg font-bold group-hover:text-gr">Responsibilities: Value Engineering, Testing Air Conditioners.</p>
-				</div>
-				<div class="bg-wg shadow-custom rounded-3xl p-6 hover:scale-110 transform transition-transform duration-300 ease-in-out hover:bg-bg group">
-					<p class="text-gr font-bold">Oct 2017 - Feb 2018</p>
-					<h3 class="text-xl font-semibold mb-2 text-rd group-hover:text-wg">PS Healthcare Service Partnership Limited</h3>
-					<p class="text-bg text-sm font-bold">Position: Intern</p>
-					<p class="mt-4 text-bg font-bold group-hover:text-gr">Responsibilities: Provided installation and maintenance services
-						for electrical appliances, air conditioners, and CCTV systems.</p>
-				</div>
-			</div>
-		</section>
-
-		<section id="resume" class="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-rd text-shadow-custom hover:scale-105 transform transition-transform duration-300 cursor-pointer">RESUME</h2>
-
-			<div class="grid grid-rows-1 md:grid-rows-1 lg:grid-rows-1 text-center gap-8 mt-12 max-w-2xl mx-auto hover:scale-105 transform transition-transform duration-300 ease-in-out group">
-				<div class="bg-wg shadow-custom rounded-3xl p-6 group-hover:bg-gr">
-					<h3 class="text-xl text-gr font-semibold mb-2 group-hover:text-wg">KIDAKORN INTHA - RESUME / CV</h3>
-					<a href="https://drive.google.com/file/d/1LAqO4_ZIBe_ccIUAFeSvG-8H4uVuFuxU/view?usp=drive_link"
-						target="_blank"
-						class="inline-block px-6 py-3 text-wg bg-rdt rounded-full shadow-md hover:bg-bg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300">
-						Dowload Resume
-					</a>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<footer>
-		<div
-			class="flex flex-col lg:flex-row justify-around items-center bg-gradient-to-b from-gr to-rdt text-wg py-4 px-8">
-			<div class="mb-4 lg:mb-0 hover:scale-105 transform transition-transform duration-300 ease-in-out">
-				<h3 class="text-xl font-bold">About Me</h3>
-				<p class="mt-2 text-center lg:text-left max-w-lg">I am a passionate Frontend Developer with a love for
-					creating
-					responsive and engaging web applications.</p>
-			</div>
-			<div id="contact" class="mb-4 lg:mb-0 hover:scale-105 transform transition-transform duration-300 ease-in-out">
-				<h3 class="text-xl font-bold">Contact</h3>
-				<p class="mt-2 text-center lg:text-left">Email: kidakorn.1@gmail.com</p>
-				<p class="text-center lg:text-left">Phone: +6609-759-6314</p>
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
-					<a href="https://www.facebook.com/coke.intha/" target="_blank">
-						<img src="img/facebook.png" alt="facebook" class="w-12 h-12 cursor-pointer">
-					</a>
-					<a href="https://www.instagram.com/c0ke_c0ke/" target="_blank">
-						<img src="img/instagram.png" alt="instagram" class="w-12 h-12 cursor-pointer">
-					</a>
-					<a href="https://line.me/ti/p/oIXCAkx4Xf" target="_blank">
-						<img src="img/line.png" alt="line" class="w-12 h-12 cursor-pointer">
-					</a>
-					<a href="https://www.linkedin.com/in/kidakorn-intha-a92782282/" target="_blank">
-						<img src="img/linkedin.png" alt="linkedin" class="w-12 h-12 cursor-pointer">
-					</a>
-					<a href="https://github.com/kidakorn" target="_blank">
-						<img src="img/github-logo.png" alt="github" class="w-12 h-12 cursor-pointer">
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="text-center py-4 bg-rdt text-wg">
-			<p>© 2024 Kidakorn Intha. All rights reserved.</p>
+		<!-- Copyright -->
+		<div class="py-4 bg-black bg-opacity-50 text-center border-t border-gray-800">
+			<p class="text-sm text-gray-400">© 2025 Kidakorn Intha. All rights reserved.</p>
 		</div>
 	</footer>
 
