@@ -452,109 +452,58 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Mobile Menu Toggle
+// Mobile Menu Variables
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
+const closeMenuBtn = document.getElementById('close-menu-btn');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-menuBtn.addEventListener('click', function() {
-    const isOpen = mobileMenu.classList.toggle('hidden');
-    document.body.classList.toggle('mobile-menu-open');
-    menuBtn.classList.toggle('mobile-menu-open');
-});
+// Hamburger button animation
+const hamburger = menuBtn.querySelector('.hamburger');
 
-// Active Link Indicator
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-function highlightNavLink() {
-    const scrollY = window.pageYOffset;
+// Toggle menu function
+function toggleMenu() {
+    const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
     
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
+    if (isMenuOpen) {
+        // Hide menu
+        mobileMenu.classList.add('translate-x-full');
+        setTimeout(() => {
+            mobileMenu.style.visibility = 'hidden';
+        }, 300); // Match this with your CSS transition duration
+    } else {
+        // Show menu
+        mobileMenu.style.visibility = 'visible';
+        requestAnimationFrame(() => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+    }
+    
+    hamburger.classList.toggle('active');
+    document.body.classList.toggle('overflow-hidden');
 }
 
-window.addEventListener('scroll', highlightNavLink);
-window.addEventListener('load', highlightNavLink);
+// Event Listeners
+menuBtn.addEventListener('click', toggleMenu);
+closeMenuBtn.addEventListener('click', toggleMenu);
 
-// Skills and Tools Scroll Controls
-document.addEventListener('DOMContentLoaded', function() {
-    // Skills Section Scroll
-    const skillsContainer = document.getElementById('cardContainer');
-    const leftArrow = document.getElementById('leftArrow');
-    const rightArrow = document.getElementById('rightArrow');
+// Close menu when clicking on mobile nav links
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        toggleMenu();
+    });
+});
 
-    if (skillsContainer && leftArrow && rightArrow) {
-        leftArrow.addEventListener('click', () => {
-            skillsContainer.scrollBy({
-                left: -300,
-                behavior: 'smooth'
-            });
-        });
-
-        rightArrow.addEventListener('click', () => {
-            skillsContainer.scrollBy({
-                left: 300,
-                behavior: 'smooth'
-            });
-        });
-
-        // Update arrows visibility
-        const updateSkillsArrows = () => {
-            leftArrow.style.opacity = skillsContainer.scrollLeft <= 0 ? '0.5' : '1';
-            rightArrow.style.opacity = 
-                Math.ceil(skillsContainer.scrollLeft + skillsContainer.clientWidth) >= skillsContainer.scrollWidth 
-                ? '0.5' 
-                : '1';
-        };
-
-        skillsContainer.addEventListener('scroll', updateSkillsArrows);
-        window.addEventListener('resize', updateSkillsArrows);
-        updateSkillsArrows();
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+        toggleMenu();
     }
+});
 
-    // Tools Section Scroll
-    const toolsContainer = document.getElementById('cardContainer-tools');
-    const toolsLeftArrow = document.getElementById('leftArrow-tools');
-    const toolsRightArrow = document.getElementById('rightArrow-tools');
-
-    if (toolsContainer && toolsLeftArrow && toolsRightArrow) {
-        toolsLeftArrow.addEventListener('click', () => {
-            toolsContainer.scrollBy({
-                left: -300,
-                behavior: 'smooth'
-            });
-        });
-
-        toolsRightArrow.addEventListener('click', () => {
-            toolsContainer.scrollBy({
-                left: 300,
-                behavior: 'smooth'
-            });
-        });
-
-        // Update arrows visibility
-        const updateToolsArrows = () => {
-            toolsLeftArrow.style.opacity = toolsContainer.scrollLeft <= 0 ? '0.5' : '1';
-            toolsRightArrow.style.opacity = 
-                Math.ceil(toolsContainer.scrollLeft + toolsContainer.clientWidth) >= toolsContainer.scrollWidth 
-                ? '0.5' 
-                : '1';
-        };
-
-        toolsContainer.addEventListener('scroll', updateToolsArrows);
-        window.addEventListener('resize', updateToolsArrows);
-        updateToolsArrows();
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && !mobileMenu.classList.contains('translate-x-full')) {
+        toggleMenu();
     }
 });
